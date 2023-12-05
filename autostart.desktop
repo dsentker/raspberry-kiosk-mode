@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=WebsiteAutorun
+Comment=Start Website
+Exec=/usr/local/bin/run_website.sh
+Icon=
+Terminal=True

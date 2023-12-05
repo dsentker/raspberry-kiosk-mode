@@ -19,6 +19,16 @@ Copy run_website.sh to `/usr/local/bin`. Make the file executable.
 sudo chmod +x /usr/local/bin/run_website.sh
 ```
 
+We need to advise Rasperry OS to run this shell script on start.
+
+### Method 1: Using `.desktop` file
+This method seems to be the most reliable. Copy the autostart.desktop file to `/etc/xdg/autostart`. You need root access
+for that, so use the terminal for this task.
+
+### Method 2: Using `LXDE-pi` autostart script
+This method was working once, from time to time it will not run as expected. It is hard to debug why the script start 
+fails.
+
 Edit the autostart file to reference this script:
 
 ```bash
@@ -31,10 +41,10 @@ Add the following line to execute the script:
 
 ```bash
 # (Keep previous entries)
-@/usr/local/bin/run_website.sh
+@bash /usr/local/bin/run_website.sh
 ```
 
-## Command line switches
+## Chromium Command line switches
 
 Edit run_website.sh to modify chromiums behaviour. Here is a good, but not complete list of
 switches: https://peter.sh/experiments/chromium-command-line-switches/
@@ -43,5 +53,5 @@ For example, to run chrome in kiosk mode, change chromium startup to this:
 
 ```bash
 # Run Chrome in kiosk mode
-chromium-browser --kiosk --autoplay-policy=no-user-gesture-required --incognito "$WEBSITE_URL"
+chromium --kiosk --autoplay-policy=no-user-gesture-required --incognito "$WEBSITE_URL"
 ```

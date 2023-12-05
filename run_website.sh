@@ -22,6 +22,9 @@ if is_website_reachable; then
   # Run Chrome in fullscreen mode, like if the user had pressed F11 right after startup
   chromium-browser --start-fullscreen --noerrdialogs --autoplay-policy=no-user-gesture-required --incognito "$WEBSITE_URL"
 
+  # Some Rasperry OS seems to have the `chromium-browser` executable:
+  # chromium-browser --start-fullscreen --noerrdialogs --autoplay-policy=no-user-gesture-required --incognito "$WEBSITE_URL"
+
 else
   echo "No network connection..."
   zenity --error --text="Check your network connection." --title="Network Error"
